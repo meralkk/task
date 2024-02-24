@@ -2,7 +2,7 @@
   <div class="form-container">
     <input v-model="serviceName" type="text" placeholder="Service Name" class="form-control mb-2">
     <input v-model="businessName" type="text" placeholder="Business Name" class="form-control mb-2">
-    <Rating v-model="serviceRating"></Rating>
+   <div class="rating"> <Rating v-model="serviceRating"></Rating></div>
     <button @click="addService" type="button" class="btn btn-primary">Submit</button>
     
     <!-- Card container to display services in a flex layout -->
@@ -56,5 +56,9 @@ const cards = cardStore.cards
   flex-wrap: wrap; 
   justify-content: center; 
   gap: 20px; 
+}
+
+.rating {
+  margin: 12px 0 30px 0;
 }
 </style>

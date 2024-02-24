@@ -4,21 +4,21 @@ import Form from "../components/Form.vue"
 
 <template>
     <div>
-  <div class="links">
-      <NuxtLink to="/pinia"><button type="button" class="btn btn-warning">Pinia Store</button></NuxtLink>
-  </div>
+        <div class="buttons">
+        <NuxtLink to="pinia"><button type="button" class="btn btn-warning">Pinia Store</button></NuxtLink>
+        <NuxtLink to="experiences"><button type="button" class="btn btn-warning">My Experiences</button></NuxtLink>
+    </div>
       <Form></Form>
     </div>
 </template>
   
-<style>
+<style scoped>
 
-.links {
+.buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-
+    gap: 20px;
     list-style: none;
     margin:0; padding:0;
     height: 100px;
@@ -26,6 +26,10 @@ import Form from "../components/Form.vue"
 
 .links a {
     text-decoration: none;
+}
+
+button {
+  width: 160px;
 }
 </style>
   

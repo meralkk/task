@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <NuxtLink to="/"><button type="button" class="btn btn-warning">Home</button></NuxtLink>
+    <div class="buttons">
+        <NuxtLink to="/"><button type="button" class="btn btn-warning">Home</button></NuxtLink>
+        <NuxtLink to="/experiences"><button type="button" class="btn btn-warning">My Experiences</button></NuxtLink>
+    </div>
     <h2>Pinia Store</h2>
    <div class="card-container"> <Card v-for="(card, index) in cardStore.cards" :key="index" :card="card"/></div>
   </div>
@@ -34,8 +37,15 @@ h2 {
 }
 
 button {
-  width: 122px;
+  width: 160px;
 }
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
 
 </style>
   

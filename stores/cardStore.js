@@ -8,5 +8,10 @@ export const useCardStore = defineStore('cardStore', {
     addCard(card) {
       this.cards.push(card)
     }
-  }
+  },
+  getters: {
+    cardsStartingWithM: (state) => {
+      return state.cards.filter((card) => card.serviceName.toLowerCase().startsWith('m'))
+    }
+  },
 })
