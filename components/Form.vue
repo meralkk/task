@@ -1,27 +1,3 @@
-<script setup>
-import { ref, reactive } from 'vue'
-import Rating from "./Rating.vue"
-import Card from "./Card.vue"
-
-const serviceName = ref('')
-const businessName = ref('')
-const serviceRating = ref(0)
-
-const cards = reactive([])
-
-const addService = () => {
-  cards.push({
-    serviceName: serviceName.value,
-    businessName: businessName.value,
-    serviceRating: serviceRating.value
-  })
-
-  serviceName.value = ''
-  businessName.value = ''
-  serviceRating.value = 0
-}
-</script>
-
 <template>
   <div class="form-container">
     <input v-model="serviceName" type="text" placeholder="Service Name" class="form-control mb-2">
@@ -36,6 +12,35 @@ const addService = () => {
   </div>
 </template>
 
+
+<script setup>
+import { ref } from 'vue'
+import Rating from "./Rating.vue"
+import Card from "./Card.vue"
+import {useCardStore} from '~/stores/cardStore' 
+
+const serviceName = ref('')
+const businessName = ref('')
+const serviceRating = ref(0)
+const cardStore = useCardStore()
+
+const addService = () => {
+  cardStore.addCard({
+    serviceName: serviceName.value,
+    businessName: businessName.value,
+    serviceRating: serviceRating.value
+  })
+
+  serviceName.value = ''
+  businessName.value = ''
+  serviceRating.value = 0
+}
+
+const cards = cardStore.cards
+
+</script>
+
+
 <style scoped>
 .form-container {
   display: flex;
@@ -48,7 +53,7 @@ const addService = () => {
 
 .card-container {
   display: flex;
-  flex-wrap: wrap; /* Allows cards to wrap to the next line if there's not enough space */
+  flex-wrap: wrap; 
   justify-content: center; 
   gap: 20px; 
 }
