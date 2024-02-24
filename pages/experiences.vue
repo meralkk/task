@@ -9,7 +9,8 @@
       <p>During the five days, I tried to understand new programming concepts and development practices. This challenged me, especially trying to grasp topics like state management via the Pinia Store, controlling reactive data flow using Vue 3's Composition API, and props passing between pages and Vue syntax. Although it is difficult to say that I have yet fully grasped these concepts, I have full confidence that constant practice and research will enable me to master these new skills.</p>
       <h5 class="info">If there is a card that starts with the letter 'm', you will be able to see it below.</h5> <br>
 
-      <div class="card-container"> <Card v-for="(card, index) in cardStore.cards" :key="index" :card="card"/></div>
+      <div class="card-container"> <Card v-for="(card, index) in cardsStartingWithM" :key="index" :card="card"/>
+</div>
 
     </div>
   </template>
