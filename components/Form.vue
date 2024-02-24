@@ -1,49 +1,42 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
+import Rating from "./Rating.vue"
+import Card from "./Card.vue"
 
 const serviceName = ref('')
 const businessName = ref('')
-const serviceRating = ref('')
+const serviceRating = ref(0)
 
 const cards = reactive([])
 
 const addService = () => {
-  
   cards.push({
     serviceName: serviceName.value,
     businessName: businessName.value,
-    serviceRating: serviceRating.value,
+    serviceRating: serviceRating.value
   })
 
   serviceName.value = ''
   businessName.value = ''
-  serviceRating.value = ''
+  serviceRating.value = 0
 }
 </script>
 
 <template>
-    <div class="form-container">
-    <input v-model="serviceName" type="text" placeholder="Service Name" class="form-control mb-2"> 
+  <div class="form-container">
+    <input v-model="serviceName" type="text" placeholder="Service Name" class="form-control mb-2">
     <input v-model="businessName" type="text" placeholder="Business Name" class="form-control mb-2">
-    <input v-model="serviceRating" type="text" placeholder="Service Rating" class="form-control mb-2">
+    <Rating v-model="serviceRating"></Rating>
     <button @click="addService" type="button" class="btn btn-primary">Submit</button>
-
+    
+    <!-- Card container to display services in a flex layout -->
     <div class="card-container">
-      <div class="card m-2" v-for="(card, index) in cards" :key="index">
-        <div class="card-body">
-          <h5 class="card-title">{{ card.serviceName }}</h5>
-          <h6 class="card-subtitle">{{ card.businessName }}</h6>
-          <p class="card-text">Service Rating: {{ card.serviceRating }}</p>
-        </div>
-      </div>
+      <Card v-for="(card, index) in cards" :key="index" :card="card" class="service-card"/>
     </div>
-
-   </div>
+  </div>
 </template>
 
-
 <style scoped>
-
 .form-container {
   display: flex;
   flex-direction: column;
@@ -55,26 +48,8 @@ const addService = () => {
 
 .card-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allows cards to wrap to the next line if there's not enough space */
   justify-content: center; 
   gap: 20px; 
 }
-
-.card {
-  width: 300px; 
-}
-
-.card-title {
-  padding-bottom: 12px;
-}
-
-.card-subtitle {
-  padding-bottom: 12px;
-}
-
-.card-body {
-  height: 140px;
-}
-
-
 </style>
