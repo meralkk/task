@@ -24,6 +24,7 @@ align-items: center;
 .card-container {
   display: flex;
   flex-wrap: wrap; 
+  justify-content: center; 
   gap: 20px; 
 }
 h2 {
