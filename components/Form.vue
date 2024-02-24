@@ -25,6 +25,16 @@ const serviceRating = ref(0)
 const cardStore = useCardStore()
 
 const addService = () => {
+  if (!serviceName.value.trim() || !businessName.value.trim()) {
+    alert('Service Name and Business Name are required.');
+    return;
+  }
+
+  if (serviceRating.value < 1 || serviceRating.value > 5) {
+    alert('Rating must be between 1 and 5.');
+    return;
+  }
+
   cardStore.addCard({
     serviceName: serviceName.value,
     businessName: businessName.value,
